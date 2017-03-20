@@ -4,7 +4,10 @@
   "description": "vue+webpack项目脚手架",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "node_modules/.bin/webpack",
+    "start": "webpack-dev-server --hot --inline",
+    "build": "node_modules/.bin/webpack --progress --profile --colors --config webpack.production.config.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +26,10 @@
   },
   "homepage": "https://github.com/qidaneix/web-project-template-vue#readme",
   "devDependencies": {
+    "babel-core": "^6.24.0",
+    "babel-loader": "^6.4.1",
+    "babel-preset-env": "^1.2.2",
+    "babel-preset-stage-2": "^6.22.0",
     "css-loader": "^0.27.3",
     "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.10.1",

@@ -14,7 +14,7 @@ charset = utf-8
 indent_style = space
 indent_size = 4
 
-[{src/**.{html,css,sass,json}, package.js}]
+[{src/**.{html,css,sass,json,vue}, package.js}]
 indent_style = space
 indent_size = 2
 

@@ -26,8 +26,15 @@ const config = {
     },
 
     module: {
-        rule: [
+        rules: [
             {
+                test: /\.js$/,
+                use: [
+                    {
+                        loader: 'babel-loader'
+                    }
+                ]
+            }, {
                 test: /\.scss$/,
                 use: extractSass.extract({
                     use: [
@@ -51,7 +58,11 @@ const config = {
                 test: /\.woff2?$|\.ttf$|\.eot$|\.svg$/,
                 use: [
                     {
-                        loader: 'url-loader'
+                        loader: 'url-loader',
+                        options: {
+                            limit: 40000,
+                            name: '[name].[ext]?[hash]'
+                        }
                     }
                 ]
             }, {
@@ -60,25 +71,40 @@ const config = {
                     {
                         loader: 'url-loader',
                         options: {
-                            limit: 40000
+                            limit: 40000,
+                            name: '[name].[ext]?[hash]'
                         }
                     }
                 ],
                 include: [srcPath]
-            }, {
-                test: /\.html$/,
-                use: [
-                    {
-                        loader: 'file-loader'
-                    }
-                ]
-            }, {
+            },  {
                 test: /\.vue$/,
                 use: [
                     {
-                        loader: 'vue-loader'
+                        loader: 'vue-loader',
+                        options: {
+                            loader: {
+                                css: extractSass.extract({
+                                    use: [
+                                        {
+                                            loader: 'css-loader',
+                                            options: {
+                                                sourceMap: true
+                                            }
+                                        }, {
+                                            loader: 'sass-loader',
+                                            options: {
+                                                sourceMap: true
+                                            }
+                                        }
+                                    ],
+                                    fallback: 'vue-style-loader'
+                                })
+                            }
+                        }
                     }
-                ]
+                ],
+                include: [srcPath]
             }
         ]
     },
