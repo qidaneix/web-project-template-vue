@@ -1,17 +1,13 @@
-import Vue from 'Vue';
-import comHeader from '../component/comHeader.vue';
-import comFooter from '../component/comFooter.vue';
-// import index from './index.vue';
+import Vue from 'vue';
+import App from './App.vue';
+
+import _ from 'lodash';
+import axios from 'axios';
 
 import '../scss/main.scss';
 
 Vue.config.productionTip = true;
 
-new Vue({
-    el: 'body',
-    components: {
-        comHeader,
-        comFooter,
-        index
-    }
-});
+var app = new Vue({
+    render: (h) => h(App)
+}).$mount('#app');

@@ -6,17 +6,17 @@
 
 <script>
 export default {
-  name: index,
+  name: 'index',
   data() {
     return {
-      msg: 'main content of sign up'
+      msg: 'main content of sign in'
     };
   }
 }
 </script>
 
 <style lang="sass" scoped>
-@import '../scss/variables.scss';
+@import '../../scss/variables.scss';
 
 main {
   color: $red;

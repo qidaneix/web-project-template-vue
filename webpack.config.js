@@ -112,12 +112,6 @@ const config = {
         ]
     },
 
-    resolve: {
-        alias: {
-            'vue$': 'vue/dist/vue.esm.js'
-        }
-    },
-
     devtool: 'source-map',
 
     devServer: {

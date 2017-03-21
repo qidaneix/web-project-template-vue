@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: index,
+  name: 'index',
   data() {
     return {
       msg: 'main content of forget password'
@@ -16,7 +16,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-@import '../scss/variables.scss';
+@import '../../scss/variables.scss';
 
 main {
   color: $red;
