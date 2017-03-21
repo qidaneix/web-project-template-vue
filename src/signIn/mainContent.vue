@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: index,
+  name: 'mainContent',
   data() {
     return {
       msg: 'main content of sign in'
@@ -15,7 +15,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="sass" scoped>
 @import '../scss/variables.scss';
 
 main {

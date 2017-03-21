@@ -1,7 +1,7 @@
 import Vue from 'Vue';
 import comHeader from '../component/comHeader.vue';
 import comFooter from '../component/comFooter.vue';
-import index from './index.vue';
+import mainContent from './mainContent.vue';
 
 import _ from 'lodash';
 import axios from 'axios';
@@ -15,6 +15,6 @@ new Vue({
     components: {
         comHeader,
         comFooter,
-        index
+        mainContent
     }
 });

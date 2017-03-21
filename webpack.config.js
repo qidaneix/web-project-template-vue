@@ -31,7 +31,10 @@ const config = {
                 test: /\.js$/,
                 use: [
                     {
-                        loader: 'babel-loader'
+                        loader: 'babel-loader',
+                        options: {
+                            sourceMap: true
+                        }
                     }
                 ]
             }, {
@@ -84,7 +87,7 @@ const config = {
                         loader: 'vue-loader',
                         options: {
                             loader: {
-                                css: extractSass.extract({
+                                scss: extractSass.extract({
                                     use: [
                                         {
                                             loader: 'css-loader',
@@ -107,6 +110,12 @@ const config = {
                 include: [srcPath]
             }
         ]
+    },
+
+    resolve: {
+        alias: {
+            'vue$': 'vue/dist/vue.esm.js'
+        }
     },
 
     devtool: 'source-map',
