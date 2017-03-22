@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const extractSass = new ExtractTextPlugin({
+const extractCss = new ExtractTextPlugin({
     filename: '[name].[hash].css'
 });
 
@@ -36,10 +36,25 @@ const config = {
                             sourceMap: true
                         }
                     }
-                ]
+                ],
+                include: [srcPath]
+            }, {
+                test: /\.css$/,
+                use: extractCss.extract({
+                    use: [
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                sourceMap: true
+                            }
+                        }
+                    ],
+                    // use style-loader in development
+                    fallback: 'style-loader'
+                })
             }, {
                 test: /\.scss$/,
-                use: extractSass.extract({
+                use: extractCss.extract({
                     use: [
                         {
                             loader: 'css-loader',
@@ -58,7 +73,7 @@ const config = {
                 }),
                 include: [srcPath]
             }, {
-                test: /\.woff2?$|\.ttf$|\.eot$|\.svg$/,
+                test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
                 use: [
                     {
                         loader: 'url-loader',
@@ -69,7 +84,7 @@ const config = {
                     }
                 ]
             }, {
-                test: /\.(png|jpg|gif)$/,
+                test: /\.(png|jpe?g|gif|svg)(\?\S*)?$/,
                 use: [
                     {
                         loader: 'url-loader',
@@ -87,7 +102,7 @@ const config = {
                         loader: 'vue-loader',
                         options: {
                             loader: {
-                                scss: extractSass.extract({
+                                scss: extractCss.extract({
                                     use: [
                                         {
                                             loader: 'css-loader',
@@ -121,7 +136,7 @@ const config = {
     },
 
     plugins: [
-        extractSass,
+        extractCss,
         new HtmlWebpackPlugin({
             title: '主界面',
             template: path.resolve(srcPath, 'main/index.html'),

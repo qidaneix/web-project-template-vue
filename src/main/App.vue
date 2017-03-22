@@ -1,19 +1,22 @@
 <template>
   <div id="app">
     <com-header></com-header>
-    <main>
-      <router-link to="/foo">Go to Foo</router-link>
-      <router-link to="/bar">Go to Bar</router-link>
-      <router-view></router-view>
-    </main>
+    <index></index>
     <com-footer></com-footer>
   </div>
 </template>
 
 <script>
+import comHeader from '../component/comHeader.vue';
+import comFooter from '../component/comFooter.vue';
+import index from './component/index.vue';
 
 export default {
-  name: 'app'
+  components: {
+    comHeader,
+    comFooter,
+    index
+  }
 }
 </script>
 
